@@ -1,15 +1,48 @@
 #!/bin/bash
 
 #Create Blocks
-#xdotool keydown shift
-#xdotool mousemove 539 430
+
+##default config for 1366x768
+base_x=536
+base_y=536
+
+##default config for 1920x1080
+#base_x=816
+#base_y=662
+
+if [ "$1" != "" ]
+then
+base_x="$1"
+fi
+
+if [ "$2" != "" ]
+then
+base_y="$1"
+fi
+
+
+dx1=39
+dy1='-255'
+
+dx2=231
+dy2='-217'
+
+x1=$(( $base_x + $dx1 ))
+y1=$(( $base_y + $dy1 ))
+
+x2=$(( $base_x + $dx2 ))
+y2=$(( $base_y + $dy2 ))
+
+#echo x1 : $x1
+#echo x2 : $x2
+
 latency=0.001
 export `xdotool getmouselocation --shell | grep X`
 export `xdotool getmouselocation --shell | grep Y`
 xdotool click 1
 xdotool click 1
 #xdotool click 3
-xdotool mousemove 575 281
+xdotool mousemove $x1 $y1
 xdotool mousedown 1
 #sleep 1
 #sleep $latency
@@ -37,7 +70,7 @@ xdotool mousemove_relative 0 +35
 sleep $latency
 xdotool mouseup 1
 sleep $latency
-xdotool mousemove 767 319
+xdotool mousemove $x2 $y2
 xdotool keydown shift
 sleep 0.1
 xdotool click 1
