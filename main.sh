@@ -1,5 +1,5 @@
 dir=`dirname $0`
-cd $dir/mc_scripts
+cd $dir
 
 #create_blocks
 #create_furnace
