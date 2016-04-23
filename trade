@@ -1,0 +1,58 @@
+#usage: move mouse to potato or others and use this
+#no need to kill
+xdotool click 1
+xdotool click 1
+sleep 0.01
+
+dick_left_x=598
+dick_left_y=346
+
+dick_right_x=765
+dick_right_y=346
+
+short_interval=0.01
+long_interval=0.08
+
+xdotool mousemove $dick_left_x $dick_left_y
+sleep 0.01
+xdotool click 1
+
+#while (true)
+for i in {1..4}
+	do
+	 
+	sleep 0.03
+	xdotool mousemove $dick_right_x $dick_right_y
+	sleep 0.01
+	xdotool keydown "shift"
+	sleep $long_interval
+	xdotool click 1
+	sleep $long_interval
+	xdotool keyup "shift"
+#	xdotool key "shift" click 1
+
+	sleep 0.01
+	xdotool mousemove $dick_left_x $dick_left_y
+	sleep 0.01
+	xdotool click 1
+	xdotool click 1
+	xdotool click 1
+
+	done
+xdotool mousemove $dick_right_x $dick_right_y
+sleep 0.01
+xdotool keydown "shift"
+sleep $long_interval
+xdotool click 1
+sleep $long_interval
+xdotool keyup "shift"
+sleep 0.01
+xdotool mousemove $dick_left_x $dick_left_y
+sleep 0.01
+xdotool keydown "shift"
+sleep $long_interval
+xdotool click 1
+sleep $long_interval
+xdotool keyup "shift"
+sleep $long_interval
+xdotool key "Escape"

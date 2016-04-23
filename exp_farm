@@ -1,0 +1,17 @@
+##mouse key
+#key=3
+#xdotool mousedown 3
+#while [ 1 ]
+#do
+#
+#xdotool click $key
+#xdotool click $key
+#xdotool click $key
+#xdotool click $key
+##xdotool key space
+#
+##sleep 0.00001
+#
+#done
+
+

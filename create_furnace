@@ -1,0 +1,54 @@
+#!/bin/bash
+
+#Create Blocks
+#xdotool keydown shift
+#xdotool mousemove 539 430
+latency=0.001
+export `xdotool getmouselocation --shell | grep X`
+export `xdotool getmouselocation --shell | grep Y`
+xdotool click 1
+xdotool click 1
+xdotool click 3
+xdotool mousemove 575 281
+xdotool mousedown 1
+#sleep 1
+#sleep $latency
+#xdotool mousedown 1
+sleep $latency
+xdotool mousemove_relative 0 35
+sleep $latency
+xdotool mousemove_relative 0 35
+sleep $latency
+xdotool mousemove_relative 35 0
+sleep $latency
+xdotool mousemove_relative 35 0
+sleep $latency
+xdotool mousemove_relative 0 -35
+sleep $latency
+xdotool mousemove_relative 0 -35
+sleep $latency
+xdotool mousemove_relative -- -35 0
+sleep $latency
+xdotool mousemove_relative -- -35 0
+sleep $latency
+xdotool mousemove_relative -- +35 0
+sleep $latency
+#xdotool mousemove_relative 0 +35
+#sleep $latency
+xdotool mouseup 1
+sleep $latency
+xdotool mousemove 767 319
+xdotool keydown shift
+sleep 0.1
+xdotool click 1
+sleep 0.1
+xdotool keyup shift
+xdotool mousemove $X $Y
+#xdotool click 1
+#for (( i=0; $i < 9; i++ ))
+#do
+#xdotool click 1
+#xdotool mousemove_relative 50 0
+#done
+#xdotool click 0
+
