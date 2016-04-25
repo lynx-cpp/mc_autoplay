@@ -17,7 +17,7 @@ fi
 
 if [ "$2" != "" ]
 then
-base_y="$1"
+base_y="$2"
 fi
 
 
@@ -33,8 +33,10 @@ y1=$(( $base_y + $dy1 ))
 x2=$(( $base_x + $dx2 ))
 y2=$(( $base_y + $dy2 ))
 
-#echo x1 : $x1
-#echo x2 : $x2
+echo x1 : $x1
+echo y1 : $y1
+echo x2 : $x2
+echo y2 : $x2
 
 latency=0.001
 export `xdotool getmouselocation --shell | grep X`
