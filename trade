@@ -1,5 +1,6 @@
 #usage: move mouse to potato or others and use this
 #no need to kill
+sleep 0.02
 xdotool click 1
 xdotool click 1
 sleep 0.01
