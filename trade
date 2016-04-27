@@ -1,9 +1,13 @@
 #usage: move mouse to potato or others and use this
 #no need to kill
-sleep 0.02
+
+short_interval=0.02
+long_interval=0.08
+
+sleep $short_interval
 xdotool click 1
 xdotool click 1
-sleep 0.01
+sleep $short_interval
 
 dick_left_x=598
 dick_left_y=346
@@ -11,49 +15,60 @@ dick_left_y=346
 dick_right_x=765
 dick_right_y=346
 
-short_interval=0.01
-long_interval=0.08
+#get start position
+start_position_x=`xdotool getmouselocation | grep -Po '\d+' | head -n 1`
+start_position_y=`xdotool getmouselocation | grep -Po '\d+' | head -n 2 | tail -n 1`
+sleep $short_interval
 
+echo $start_position_x
+echo $start_position_y
+
+#move to dick left
 xdotool mousemove $dick_left_x $dick_left_y
-sleep 0.01
+sleep $short_interval
 xdotool click 1
 
 #while (true)
 for i in {1..4}
 	do
 	 
+#take emerald
 	sleep 0.03
 	xdotool mousemove $dick_right_x $dick_right_y
-	sleep 0.01
+	sleep $short_interval
 	xdotool keydown "shift"
 	sleep $long_interval
 	xdotool click 1
 	sleep $long_interval
 	xdotool keyup "shift"
-#	xdotool key "shift" click 1
 
-	sleep 0.01
+#move to left and click for 3 times
+	sleep $short_interval
 	xdotool mousemove $dick_left_x $dick_left_y
-	sleep 0.01
+	sleep $short_interval
 	xdotool click 1
 	xdotool click 1
 	xdotool click 1
 
 	done
+#take emerald
 xdotool mousemove $dick_right_x $dick_right_y
-sleep 0.01
+sleep $short_interval
 xdotool keydown "shift"
 sleep $long_interval
 xdotool click 1
 sleep $long_interval
 xdotool keyup "shift"
-sleep 0.01
+#move to left
+sleep $short_interval
 xdotool mousemove $dick_left_x $dick_left_y
-sleep 0.01
-xdotool keydown "shift"
-sleep $long_interval
+sleep $short_interval
+
+#move the item to start position
+xdotool click 1
+sleep $short_interval
+xdotool mousemove $start_position_x $start_position_y
+sleep $short_interval
 xdotool click 1
 sleep $long_interval
-xdotool keyup "shift"
-sleep $long_interval
-xdotool key "Escape"
+xdotool key Escape
