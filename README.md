@@ -1,4 +1,4 @@
-# mc_autoplay
+# mc\_autoplay
 xdotool scripts for playing minecraft more conveniently
 
 edit main.sh to use functions.
@@ -11,3 +11,6 @@ edit main.sh to use functions.
   4. hold right key
   5. trade with villagers
 
+## how to use :
+  1. add command like "bash $PATH\_TO\_MC\_AUTOPLAY/mc\_autoplay.sh create\_blocks" to your shortcut config, this script will execute "create\_blocks" 
+  2. add command like "bash $PATH\_TO\_MC\_AUTOPLAY/close.sh " to your shortcut config, this script will kill mc\_autoplay
