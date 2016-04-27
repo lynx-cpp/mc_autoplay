@@ -5,7 +5,8 @@ cd $dir
 
 trade_script="trade"
 
-interval=0.4
+long_interval=0.5
+short_interval=0.05
 
 pack_1_x=549
 pack_1_y=403
@@ -19,17 +20,17 @@ while (true)
 
 #first
 	xdotool click 3
-	sleep $interval
+	sleep $long_interval
 	xdotool mousemove $pack_1_x $pack_1_y
-	sleep $interval
+	sleep $short_interval
 	bash $trade_script
 	sleep 3
 
 #second
 	xdotool click 3
-	sleep $interval
+	sleep $long_interval
 	xdotool mousemove $pack_2_x $pack_2_y
-	sleep $interval
+	sleep $short_interval
 	bash $trade_script
 	sleep 3
 
