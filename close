@@ -1,0 +1,9 @@
+pkill -f right_key
+pkill -f create_blocks
+pkill -f create_furnace
+pkill -f exp_farm
+pkill -f main.sh
+pkill -f auto_trade_farmer.sh
+pkill -f trade
+
+xdotool keyup Shift
