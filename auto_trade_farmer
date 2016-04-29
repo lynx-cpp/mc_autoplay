@@ -6,7 +6,7 @@ cd $dir
 trade_script="trade"
 
 long_interval=0.5
-short_interval=0.05
+short_interval=0.09
 
 pack_1_x=549
 pack_1_y=403

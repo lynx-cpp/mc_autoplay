@@ -1,7 +1,7 @@
 #usage: move mouse to potato or others and use this
 #no need to kill
 
-short_interval=0.02
+short_interval=0.03
 long_interval=0.08
 
 sleep $short_interval
