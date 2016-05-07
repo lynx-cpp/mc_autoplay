@@ -36,7 +36,7 @@ short_interval=0.09
 
 ### change these values to specify things to trade! 0 for default value, 3 for bread, 5 for Pumpkin pie, 6 for apple, 7 for cookie, 8 for cake
 pack_1_page=0
-pack_2_page=0
+pack_2_page=5
 
 pack_1_x=$(( $base_x + 13 ))
 pack_1_y=$(( $base_y + -133 ))
@@ -84,6 +84,23 @@ while (true)
 #second
 	xdotool click 3
 	sleep $long_interval
+
+    xdotool mousemove $left_button_x $left_button_y
+    for ((i=0; i<$max_pages; i++))
+    do
+        xdotool click 1
+        sleep $short_interval
+    done
+    sleep $short_interval
+
+    xdotool mousemove $right_button_x $right_button_y
+    for ((i=0; i<$pack_2_page; i++))
+    do
+        sleep $short_interval
+        xdotool click 1
+    done
+    sleep $short_interval
+
 	xdotool mousemove $pack_2_x $pack_2_y
 	sleep $short_interval
 	bash $trade_script $@
