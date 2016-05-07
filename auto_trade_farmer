@@ -59,13 +59,13 @@ while (true)
 	xdotool click 3
 	sleep $long_interval
 
-    xdotool mousemove $left_button_x $left_button_y
-    for ((i=0; i<$max_pages; i++))
-    do
-        xdotool click 1
-        sleep $short_interval
-    done
-    sleep $short_interval
+    #xdotool mousemove $left_button_x $left_button_y
+    #for ((i=0; i<$max_pages; i++))
+    #do
+    #    xdotool click 1
+    #    sleep $short_interval
+    #done
+    #sleep $short_interval
 
     xdotool mousemove $right_button_x $right_button_y
     for ((i=0; i<$pack_1_page; i++))
@@ -85,13 +85,13 @@ while (true)
 	xdotool click 3
 	sleep $long_interval
 
-    xdotool mousemove $left_button_x $left_button_y
-    for ((i=0; i<$max_pages; i++))
-    do
-        xdotool click 1
-        sleep $short_interval
-    done
-    sleep $short_interval
+    #xdotool mousemove $left_button_x $left_button_y
+    #for ((i=0; i<$max_pages; i++))
+    #do
+    #    xdotool click 1
+    #    sleep $short_interval
+    #done
+    #sleep $short_interval
 
     xdotool mousemove $right_button_x $right_button_y
     for ((i=0; i<$pack_2_page; i++))
