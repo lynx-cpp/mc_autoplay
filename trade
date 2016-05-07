@@ -1,5 +1,27 @@
+#!/bin/bash
 #usage: move mouse to potato or others and use this
 #no need to kill
+
+
+##default config for 1366x768
+base_x=536
+base_y=536
+
+##default config for 1920x1080
+#base_x=816
+#base_y=662
+
+if [ "$1" != "" ]
+then
+    base_x="$1"
+fi
+
+if [ "$2" != "" ]
+then
+    base_y="$2"
+fi
+
+
 
 short_interval=0.03
 long_interval=0.08
@@ -9,11 +31,17 @@ xdotool click 1
 xdotool click 1
 sleep $short_interval
 
-dick_left_x=598
-dick_left_y=346
+#dick_left_x=598
+#dick_left_y=346
 
-dick_right_x=765
-dick_right_y=346
+#dick_right_x=765
+#dick_right_y=346
+
+dick_left_x=$(( $base_x + 62 ))
+dick_left_y=$(( $base_y + -190 ))
+
+dick_right_x=$(( $base_x + 229 ))
+dick_right_y=$(( $base_y + -190 ))
 
 #get start position
 start_position_x=`xdotool getmouselocation | grep -Po '\d+' | head -n 1`

@@ -1,3 +1,4 @@
+#!/bin/bash
 xdotool keydown shift
 xdotool keydown s
 xdotool mousedown 3

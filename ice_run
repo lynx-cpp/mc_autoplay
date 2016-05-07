@@ -1,3 +1,5 @@
+#!/bin/bash
+
 interval=0.1
 xdotool keydown w
 sleep 0.05

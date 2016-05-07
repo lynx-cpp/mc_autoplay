@@ -1,18 +1,43 @@
+#!/bin/bash
 #usage: take carrot and potatoes as much as you can.
 #		put carrots at the first position and potatoes at the second position in yout backpack
 dir=`dirname $0`
 cd $dir
+
+##default config for 1366x768
+base_x=536
+base_y=536
+
+##default config for 1920x1080
+#base_x=816
+#base_y=662
+
+if [ "$1" != "" ]
+then
+    base_x="$1"
+fi
+
+if [ "$2" != "" ]
+then
+    base_y="$2"
+fi
+
 
 trade_script="trade"
 
 long_interval=0.5
 short_interval=0.09
 
-pack_1_x=549
-pack_1_y=403
+#pack_1_x=549
+#pack_1_y=403
+#
+#pack_2_x=572
+#pack_2_y=$pack_1_y
 
+pack_1_x=$(( $base_x + 13 ))
+pack_1_y=$(( $base_y + -133 ))
 
-pack_2_x=572
+pack_2_x=$(( $base_x + 36 ))
 pack_2_y=$pack_1_y
 
 while (true)
@@ -23,7 +48,7 @@ while (true)
 	sleep $long_interval
 	xdotool mousemove $pack_1_x $pack_1_y
 	sleep $short_interval
-	bash $trade_script
+	bash $trade_script $@
 	sleep 3
 
 #second
@@ -31,7 +56,7 @@ while (true)
 	sleep $long_interval
 	xdotool mousemove $pack_2_x $pack_2_y
 	sleep $short_interval
-	bash $trade_script
+	bash $trade_script $@
 	sleep 3
 
 	done
