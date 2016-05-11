@@ -8,7 +8,13 @@ kill -9 $pid
 
 rm -f "$pid_filename"
 
-xdotool keydown Shift
-sleep 0.01
-xdotool keyup Shift
+for key in 'shift' 'w' 's' 'space'
+do
+#xdotool keydown $key
+#	sleep 0.01
+	xdotool keyup $key
+	sleep 0.01
+
+done
+
 xdotool mouseup 3

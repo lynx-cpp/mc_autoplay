@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Create Blocks
-latency=0.01
+latency=0.005
 ##default config for 1366x768
 base_x=536
 base_y=536
