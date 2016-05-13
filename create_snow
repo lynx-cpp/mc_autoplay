@@ -56,8 +56,8 @@ xo=$(( $base_x + $dxo ))
 yo=$(( $base_y + $dyo ))
 
 d_move=38
-interval=0.006
-shift_interval=0.04
+interval=0.00
+shift_interval=0.05
 
 echo x1 : $x1
 echo y1 : $y1
