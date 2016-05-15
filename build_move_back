@@ -1,4 +1,14 @@
 #!/bin/bash
-xdotool keydown shift
+xdotool keydown Shift
 xdotool keydown s
 xdotool mousedown 3
+
+while [ -f /.mc_autoplay_continue_flag ]
+do
+sleep 1
+done
+
+xdotool keyup Shift
+xdotool mouseup 3
+xdotool mousup 3
+

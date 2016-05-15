@@ -1,5 +1,5 @@
-while (true)
-	do
+while [ `./is_to_continue` -eq 1 ]
+do
 	xdotool click 3
 	sleep 0.01
-	done
+done

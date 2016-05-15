@@ -79,6 +79,8 @@ xdotool click 1
 sleep 0.1
 xdotool keyup shift
 xdotool mousemove $X $Y
+sleep 0.01
+xdotool click 1
 #xdotool click 1
 #for (( i=0; $i < 9; i++ ))
 #do

@@ -4,7 +4,7 @@ interval=0.1
 xdotool keydown w
 sleep 0.05
 xdotool key ctrl
-while(true)
+while [ `./is_to_continue` -eq 1 ]
 	do
 
 	sleep $interval
@@ -13,3 +13,7 @@ while(true)
 	xdotool keyup space
 
 	done
+
+
+sleep $interval
+xdotool keyup w

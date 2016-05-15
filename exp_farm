@@ -1,7 +1,7 @@
 #mouse key
-key=3
+key=1
 xdotool mousedown 3
-while [ 1 ]
+while [ `./is_to_continue` -eq 1 ]
 do
 
 xdotool click $key
@@ -14,4 +14,6 @@ xdotool click $key
 
 done
 
+sleep 0.1
+xdotool mouseup 3
 

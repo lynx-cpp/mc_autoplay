@@ -1,1 +1,8 @@
 xdotool mousedown 3
+
+while [ -f /.mc_autoplay_continue_flag ]
+do
+sleep 1
+done
+
+xdotool mouseup 3

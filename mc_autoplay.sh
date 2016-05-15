@@ -20,6 +20,10 @@ then
     name="$1"
 fi
 
+#create flag
+
+touch .mc_autoplay_continue_flag
+
 bash $name &
 
 echo "$!" > .last_pid

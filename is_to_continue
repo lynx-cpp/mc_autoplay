@@ -1,0 +1,6 @@
+if [ -f .mc_autoplay_continue_flag ]
+then
+	echo 1
+else
+	echo 0
+fi
