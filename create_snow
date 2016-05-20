@@ -68,6 +68,9 @@ echo y3 : $y3
 echo x4 : $x4
 echo y4 : $y4
 
+#sleep first
+sleep $shift_interval
+
 xdotool mousemove $base_x $base_y
 
 x_now=0

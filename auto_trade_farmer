@@ -52,7 +52,7 @@ left_button_y=$(( $base_y + -235 ))
 right_button_x=$(( $base_x + 273 ))
 right_button_y=$left_button_y
 
-while [ `is_to_continue` -eq 1 ]
+while [ `./is_to_continue` -eq 1 ]
 	do
 
     #first

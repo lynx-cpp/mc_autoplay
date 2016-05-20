@@ -3,7 +3,7 @@
 dir=`dirname $0`
 cd $dir
 
-./close.sh
+#./close.sh
 
 #create_blocks
 #create_furnace

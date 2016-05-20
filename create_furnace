@@ -38,6 +38,8 @@ echo y1 : $y1
 echo x2 : $x2
 echo y2 : $x2
 
+#sleep first
+sleep 0.1
 
 export `xdotool getmouselocation --shell | grep X`
 export `xdotool getmouselocation --shell | grep Y`
