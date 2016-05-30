@@ -1,0 +1,190 @@
+#!/bin/bash
+
+#Create Blocks
+
+##default config for 1366x768
+base_x=536
+base_y=536
+
+##default config for 1920x1080
+#base_x=816
+#base_y=662
+
+#! use this script when ONLY one type of items in you inventory
+
+if [ "$1" != "" ]
+then
+base_x="$1"
+fi
+
+if [ "$2" != "" ]
+then
+base_y="$2"
+fi
+
+
+#position in simple crafting
+dx1=46
+dy1='-259'
+
+dx2=84
+dy2='-259'
+
+dx3=124
+dy3='-259'
+
+dx4=46
+dy4='-221'
+
+dx5=84
+dy5='-221'
+
+dx6=124
+dy6='-221'
+
+dx7=46
+dy7='-183'
+
+dx8=84
+dy8='-183'
+
+dx9=124
+dy9='-183'
+
+
+#output
+dxo=232
+dyo='-221'
+
+x1=$(( $base_x + $dx1 ))
+y1=$(( $base_y + $dy1 ))
+
+x2=$(( $base_x + $dx2 ))
+y2=$(( $base_y + $dy2 ))
+
+x3=$(( $base_x + $dx3 ))
+y3=$(( $base_y + $dy3 ))
+
+x4=$(( $base_x + $dx4 ))
+y4=$(( $base_y + $dy4 ))
+
+x5=$(( $base_x + $dx5 ))
+y5=$(( $base_y + $dy5 ))
+
+x6=$(( $base_x + $dx6 ))
+y6=$(( $base_y + $dy6 ))
+
+x6=$(( $base_x + $dx6 ))
+y6=$(( $base_y + $dy6 ))
+
+x7=$(( $base_x + $dx7 ))
+y7=$(( $base_y + $dy7 ))
+
+x8=$(( $base_x + $dx8 ))
+y8=$(( $base_y + $dy8 ))
+
+x9=$(( $base_x + $dx9 ))
+y9=$(( $base_y + $dy9 ))
+
+xo=$(( $base_x + $dxo ))
+yo=$(( $base_y + $dyo ))
+
+d_move=38
+interval=0.00
+shift_interval=0.06
+
+echo x1 : $x1
+echo y1 : $y1
+echo x2 : $x2
+echo y2 : $y2
+echo x3 : $x3
+echo y3 : $y3
+echo x4 : $x4
+echo y4 : $y4
+
+#sleep first
+sleep $shift_interval
+
+xdotool mousemove $base_x $base_y
+
+x_now=0
+y_now=0
+
+for ((i=0;i<4;++i))
+do
+	#move item 
+	x_now=`xdotool getmouselocation | grep -Po '\d+' | head -n 1`
+	y_now=`xdotool getmouselocation | grep -Po '\d+' | head -n 2 | tail -n 1`
+#test
+	echo x_now : $x_now
+	echo y_now : $y_now
+	sleep $interval
+	xdotool click 1
+	sleep $interval
+	xdotool mousemove $x1 $y1
+	sleep $interval
+	xdotool click 1
+	sleep $interval
+	xdotool mousemove $x_now $y_now
+	#end moving
+	for ((j=0;j<8;++j))
+	do
+		sleep $interval
+		xdotool mousemove_relative $d_move 0
+		x_now=`xdotool getmouselocation | grep -Po '\d+' | head -n 1`
+		y_now=`xdotool getmouselocation | grep -Po '\d+' | head -n 2 | tail -n 1`
+		#move item
+		sleep $interval
+		xdotool click 1
+		sleep $interval
+		if (( $j == 0 ))
+		then
+			xdotool mousemove $x2 $y2
+		elif (( $j == 1 ))
+		then
+			xdotool mousemove $x3 $y3
+		elif (( $j == 2 ))
+		then
+			xdotool mousemove $x4 $y4
+		elif (( $j == 3 ))
+		then
+			xdotool mousemove $x5 $y5
+		elif (( $j == 4 ))
+		then
+			xdotool mousemove $x6 $y6
+		elif (( $j == 5 ))
+		then
+			xdotool mousemove $x7 $y7
+		elif (( $j == 6 ))
+		then
+			xdotool mousemove $x8 $y8
+		elif (( $j == 7 ))
+		then
+			xdotool mousemove $x9 $y9
+		fi
+		sleep $interval
+		xdotool click 1
+		#end moving
+		sleep $interval
+		xdotool mousemove $x_now $y_now
+	done
+	#output
+	sleep $interval
+	xdotool mousemove $xo $yo
+	sleep $shift_interval
+	xdotool keydown Shift
+	sleep $shift_interval
+	xdotool click 1
+	sleep $shift_interval
+	xdotool keyup Shift
+	#moveback
+	sleep $shift_interval
+	xdotool mousemove $x_now $y_now
+
+	if (( $i == 8 ))
+	then
+		break
+	fi
+	sleep $interval
+	xdotool mousemove_relative -- $((-8*$d_move)) -$d_move
+done
