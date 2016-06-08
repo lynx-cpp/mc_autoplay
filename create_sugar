@@ -1,0 +1,100 @@
+#!/bin/bash
+
+#Create Blocks
+
+##default config for 1366x768
+base_x=536
+base_y=536
+
+##default config for 1920x1080
+#base_x=816
+#base_y=662
+
+#! use this script when ONLY snow balls in you inventory
+
+if [ "$1" != "" ]
+then
+base_x="$1"
+fi
+
+if [ "$2" != "" ]
+then
+base_y="$2"
+fi
+
+
+#position in simple crafting
+dx1=160
+dy1='-240'
+
+dx2=160
+dy2='-200'
+
+dx3=200
+dy3='-240'
+
+dx4=200
+dy4='-200'
+
+#output
+dxo=275
+dyo='-222'
+
+x1=$(( $base_x + $dx1 ))
+y1=$(( $base_y + $dy1 ))
+
+x2=$(( $base_x + $dx2 ))
+y2=$(( $base_y + $dy2 ))
+
+x3=$(( $base_x + $dx3 ))
+y3=$(( $base_y + $dy3 ))
+
+x4=$(( $base_x + $dx4 ))
+y4=$(( $base_y + $dy4 ))
+
+xo=$(( $base_x + $dxo ))
+yo=$(( $base_y + $dyo ))
+
+d_move=38
+interval=0.00
+shift_interval=0.05
+
+echo x1 : $x1
+echo y1 : $y1
+echo x2 : $x2
+echo y2 : $y2
+echo x3 : $x3
+echo y3 : $y3
+echo x4 : $x4
+echo y4 : $y4
+
+#sleep first
+sleep $shift_interval
+
+xdotool mousemove $base_x $base_y
+
+x_now=0
+y_now=0
+
+for ((i=0;i<9;++i))
+do
+	for ((j=0;j<4;++j))
+	do
+		sleep $interval
+		xdotool mousemove $(( $base_x + i * $d_move )) $(( $base_y - j * $d_move ))
+		sleep $interval
+		xdotool click 1
+		sleep $interval
+		xdotool mousemove $x1 $y1
+		sleep $interval
+		xdotool click 1
+		sleep $interval
+		xdotool mousemove $xo $yo
+		sleep $shift_interval
+		xdotool keydown Shift
+		sleep $interval
+		xdotool click 1
+		sleep $shift_interval
+		xdotool keyup Shift
+	done
+done
