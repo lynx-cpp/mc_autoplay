@@ -1,0 +1,177 @@
+#!/bin/bash
+
+#Create Blocks
+
+##default config for 1366x768
+base_x=536
+base_y=536
+
+##default config for 1920x1080
+#base_x=816
+#base_y=662
+
+#!assume S=sugar, P=pumpkin, E=egg
+#!make your inventory like this before using this script
+
+#! P E E P E E P E E
+#! S E E S E E S E E
+#! P E E P E E P E E
+#! S E E S E E S E E
+
+
+if [ "$1" != "" ]
+then
+base_x="$1"
+fi
+
+if [ "$2" != "" ]
+then
+base_y="$2"
+fi
+
+
+#position in simple crafting
+dx1=160
+dy1='-240'
+
+dx2=160
+dy2='-200'
+
+dx3=200
+dy3='-240'
+
+dx4=200
+dy4='-200'
+
+#output
+dxo=275
+dyo='-222'
+
+x1=$(( $base_x + $dx1 ))
+y1=$(( $base_y + $dy1 ))
+
+x2=$(( $base_x + $dx2 ))
+y2=$(( $base_y + $dy2 ))
+
+x3=$(( $base_x + $dx3 ))
+y3=$(( $base_y + $dy3 ))
+
+x4=$(( $base_x + $dx4 ))
+y4=$(( $base_y + $dy4 ))
+
+xo=$(( $base_x + $dxo ))
+yo=$(( $base_y + $dyo ))
+
+d_move=38
+interval=0.00
+shift_interval=0.05
+
+echo x1 : $x1
+echo y1 : $y1
+echo x2 : $x2
+echo y2 : $y2
+echo x3 : $x3
+echo y3 : $y3
+echo x4 : $x4
+echo y4 : $y4
+
+#sleep first
+sleep $shift_interval
+
+xdotool mousemove $base_x $base_y
+
+x_now=0
+y_now=0
+
+for ((i=0;i<6;++i))
+do
+#6 working area
+	if (($i == 0))
+	then
+		working_x=$base_x
+		working_y=$base_y
+		echo $working_x
+		echo $working_y
+	elif (($i == 1))
+	then
+		working_x=$(( $base_x + 3 * $d_move ))
+		working_y=$base_y
+		echo $working_x
+		echo $working_y
+	elif (($i == 2))
+	then
+		working_x=$(( $base_x + 6 * $d_move ))
+		working_y=$base_y
+		echo $working_x
+		echo $working_y
+	elif (($i == 3))
+	then
+		working_x=$base_x
+		working_y=$(( $base_y - 2 * $d_move ))
+		echo $working_x
+		echo $working_y
+	elif (($i == 4))
+	then
+		working_x=$(( $base_x + 3 * $d_move ))
+		working_y=$(( $base_y - 2 * $d_move ))
+		echo $working_x
+		echo $working_y
+	elif (($i == 5))
+	then
+		working_x=$(( $base_x + 6 * $d_move ))
+		working_y=$(( $base_y - 2 * $d_move ))
+		echo $working_x
+	fi
+	xdotool mousemove $working_x $working_y
+#create 16 pies for 4 times per working area
+#move P & S first
+	#S
+	sleep $interval
+	xdotool click 1
+	sleep $interval
+	xdotool mousemove $x1 $y1
+	sleep $interval
+	xdotool click 1
+	#P
+	sleep $interval
+	xdotool mousemove $working_x $(( $working_y - $d_move ))
+	sleep $interval
+	xdotool click 1
+	sleep $interval
+	xdotool mousemove $x2 $y2
+	sleep $interval
+	xdotool click 1
+	#loop for eggs
+	for ((j=0;j<4;++j))
+	do
+		sleep $interval
+		if (($j==0))
+		then
+			xdotool mousemove $(($working_x + $d_move)) $working_y
+		elif (($j==1))
+		then
+			xdotool mousemove $(($working_x + $d_move)) $(($working_y - $d_move))
+		elif (($j==2))
+		then
+			xdotool mousemove $(($working_x + 2 * $d_move)) $working_y
+		elif (($j==3))
+		then
+			xdotool mousemove $(($working_x + 2 * $d_move)) $(($working_y - $d_move))
+		fi
+		sleep $interval
+		xdotool click 1
+		sleep $interval
+		xdotool mousemove $x3 $y3
+		sleep $interval
+		xdotool click 1
+		sleep $interval
+		xdotool mousemove $xo $yo
+		sleep $shift_interval
+		xdotool keydown Shift
+		sleep $shift_interval
+		xdotool click 1
+		sleep $shift_interval
+		xdotool keyup Shift
+		sleep $shift_interval
+	done
+done
