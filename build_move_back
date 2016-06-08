@@ -1,14 +1,23 @@
 #!/bin/bash
+interval=0.1
+sleep $interval
 xdotool keydown Shift
+sleep $interval
 xdotool keydown s
+sleep $interval
 xdotool mousedown 3
+sleep $interval
 
-while [ -f /.mc_autoplay_continue_flag ]
+while [ `./is_to_continue` -eq 1 ]
 do
+echo "loop"
 sleep 1
 done
 
+echo "over"
 xdotool keyup Shift
+sleep $interval
+xdotool keyup s
+sleep $interval
 xdotool mouseup 3
-xdotool mousup 3
 

@@ -1,6 +1,6 @@
 xdotool mousedown 1
 
-while [ -f /.mc_autoplay_continue_flag ]
+while [ `./is_to_continue` -eq 1 ]
 do
 sleep 1
 done
