@@ -22,9 +22,12 @@ fi
 
 #create flag
 
-touch .mc_autoplay_continue_flag
+touch .mc_autoplay_continue_flag 
+echo "Triggerring autoplay...name = $name" >> log
 
-bash $name &
+bash $name 816 662 &
+#bash $name 874 511 &
+#bash $name 869 483 &
 
 echo "$!" > .last_pid
 

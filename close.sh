@@ -1,14 +1,17 @@
-dir=`dirname $0`
+_dir=`dirname $0`
+dir=`readlink -f $_dir`
 cd $dir
 
+echo closing >> log
+
 #delete flag
-rm ./.mc_autoplay_continue_flag
+rm -f ${dir}/.mc_autoplay_continue_flag
 
 sleep 2
 
 pid_filename=".last_pid"
 
-pid=`cat "$pid_filename"`
+pid=`cat "${dir}/$pid_filename"`
 kill -9 $pid
 
 rm -f "$pid_filename"

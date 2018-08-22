@@ -44,6 +44,7 @@ sleep 0.1
 latency=0.001
 export `xdotool getmouselocation --shell | grep X`
 export `xdotool getmouselocation --shell | grep Y`
+sleep $latency
 xdotool click 1
 xdotool click 1
 #xdotool click 3

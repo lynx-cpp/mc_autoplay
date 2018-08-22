@@ -25,7 +25,7 @@ fi
 
 trade_script="trade"
 
-long_interval=0.5
+long_interval=3
 short_interval=0.09
 
 #pack_1_x=549
@@ -78,8 +78,8 @@ while [ `./is_to_continue` -eq 1 ]
 	xdotool mousemove $pack_1_x $pack_1_y
 	sleep $short_interval
 
-	bash $trade_script $@
-	sleep 3
+	bash $trade_script $@ 4
+	sleep 5
 
 #second
 	xdotool click 3
@@ -103,7 +103,25 @@ while [ `./is_to_continue` -eq 1 ]
 
 	xdotool mousemove $pack_2_x $pack_2_y
 	sleep $short_interval
-	bash $trade_script $@
-	sleep 3
+	bash $trade_script $@ 2
+	sleep 5
+
+##third
+#	xdotool click 3
+#	sleep $long_interval
+#
+#    xdotool mousemove $right_button_x $right_button_y
+#    for ((i=0; i<$pack_3_page; i++))
+#    do
+#        sleep $short_interval
+#        xdotool click 1
+#    done
+#    sleep $short_interval
+#
+#	xdotool mousemove $pack_3_x $pack_3_y
+#	sleep $short_interval
+#	#bash $trade_script $@
+#	sleep 3
+
 
 	done

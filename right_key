@@ -1,8 +1,18 @@
+#!/bin/bash
+
+dir=`dirname $0`
+cd $dir
+
 xdotool mousedown 3
 
-while [ -f /.mc_autoplay_continue_flag ]
+echo "right_key enabled" >> log
+
+while [ -f ./.mc_autoplay_continue_flag ]
 do
 sleep 1
+echo "checking right_key..." >> log
 done
+
+echo "right_key disabled" >> log
 
 xdotool mouseup 3

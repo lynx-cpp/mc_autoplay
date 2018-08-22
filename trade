@@ -2,10 +2,11 @@
 #usage: move mouse to potato or others and use this
 #no need to kill
 
-
 ##default config for 1366x768
 base_x=536
 base_y=536
+
+trade_num=4
 
 ##default config for 1920x1080
 #base_x=816
@@ -21,10 +22,20 @@ then
     base_y="$2"
 fi
 
+if [ "$3" != "" ]
+then
+    trade_num="$3"
+fi
+
+cd `dirname $0`
+echo "Start trading... (x,y): ($base_x,$base_y), trade_num: $trade_num" >> log
 
 
 short_interval=0.03
 long_interval=0.08
+
+#short_interval=0.53
+#long_interval=1
 
 sleep $short_interval
 xdotool click 1
@@ -37,11 +48,16 @@ sleep $short_interval
 #dick_right_x=765
 #dick_right_y=346
 
+#dick_left_x=$(( $base_x + 62 ))
+#dick_left_y=$(( $base_y + -190 ))
+#dick_right_x=$(( $base_x + 229 ))
+#dick_right_y=$(( $base_y + -190 ))
+
 dick_left_x=$(( $base_x + 62 ))
-dick_left_y=$(( $base_y + -190 ))
+dick_left_y=$(( $base_y + -183))
 
 dick_right_x=$(( $base_x + 229 ))
-dick_right_y=$(( $base_y + -190 ))
+dick_right_y=$(( $base_y + -183))
 
 #get start position
 start_position_x=`xdotool getmouselocation | grep -Po '\d+' | head -n 1`
@@ -57,8 +73,11 @@ sleep $short_interval
 xdotool click 1
 
 #while (true)
-for i in {1..4}
+#for i in {1..$trade_num}
+for ((i=0; $i<$trade_num; i++))
 	do
+        echo "trading... (x,y): ($base_x,$base_y), trade_num: $trade_num, current_num: $i" >> log
+
 	 
 #take emerald
 	sleep 0.03
@@ -79,6 +98,8 @@ for i in {1..4}
 	xdotool click 1
 
 	done
+
+sleep $short_interval
 #take emerald
 xdotool mousemove $dick_right_x $dick_right_y
 sleep $short_interval
