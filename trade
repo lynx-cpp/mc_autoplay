@@ -31,7 +31,7 @@ cd `dirname $0`
 echo "Start trading... (x,y): ($base_x,$base_y), trade_num: $trade_num" >> log
 
 
-short_interval=0.03
+short_interval=0.05
 long_interval=0.08
 
 #short_interval=0.53
@@ -40,6 +40,7 @@ long_interval=0.08
 sleep $short_interval
 xdotool click 1
 xdotool click 1
+#xdotool click 3
 sleep $short_interval
 
 #dick_left_x=598
@@ -80,7 +81,7 @@ for ((i=0; $i<$trade_num; i++))
 
 	 
 #take emerald
-	sleep 0.03
+	sleep $short_interval
 	xdotool mousemove $dick_right_x $dick_right_y
 	sleep $short_interval
 	xdotool keydown "shift"
@@ -120,4 +121,4 @@ xdotool mousemove $start_position_x $start_position_y
 sleep $short_interval
 xdotool click 1
 sleep $long_interval
-xdotool key Escape
+#xdotool key Escape
