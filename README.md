@@ -14,3 +14,7 @@ edit main.sh to use functions.
 ## how to use :
   1. add command like "bash $PATH\_TO\_MC\_AUTOPLAY/mc\_autoplay.sh create\_blocks" to your shortcut config, this script will execute "create\_blocks" 
   2. add command like "bash $PATH\_TO\_MC\_AUTOPLAY/close.sh " to your shortcut config, this script will kill mc\_autoplay
+
+
+## for windows user
+use mc.ahk in `windows/`
